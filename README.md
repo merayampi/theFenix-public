@@ -1,10 +1,14 @@
 # theFenix-public
 my server project at home
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ____ _ _____ _ _ #
-# / ___| ___ | | ___|__ _ __ _ ___ | | _ _ __ _(_) __ _ # # \___ \ / _ \| | |_ / _ \ '_ \| \ \ / | | | | | |/ _` |
-|/ _` | # # ___) | (_) | | _| __/ | | | |> < | |___| |_| | (_| | | (_| | # # |____/ \___/|_|_| \___|_| |_|_/_/\_\
-|_____|\__,_|\__, |_|\__,_| # # |___/ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# # # # # # # # ## 🌐 Welcome to theFenix (Public Ingress) I am **Jean Pierre Rivera**,
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ __  __                  __   __                 _ 
+|  \/  | ___ _ __ __ _   \ \ / /_ _ _ __  _ __  (_)
+| |\/| |/ _ \ '__/ _` |   \ V / _` | '_ \| '_ \ | |
+| |  | |  __/ | | (_| |    | | (_| | | | | |_) || |
+|_|  |_|\___|_|  \__,_|    |_|\__,_|_| |_| .__/ |_|
+                                         |_|
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ## 
+🌐 Welcome to theFenix (Public Ingress) I am **Jean Pierre Rivera**,
 known across the web as **meraYampi** (or **Yampi**). I am a veteran client operations
 specialist, technical educator, and systems administrator with over 16 years of experience
 managing dynamic real-world service workflows, training elite personnel, and orchestrating
