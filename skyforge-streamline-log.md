@@ -49,3 +49,22 @@ The secondary audit located the *arr stack configurations (Radarr, Sonarr, Prowl
 - Quarantined Radarr, Sonarr, and Prowlarr configuration folders to `~/skyforge_quarantine/` to safely disable them without permanent deletion.
 - Preserved `qBittorrent` and `Nextcloud` directories.
 - Preparing to prune the `docker-compose.yml` file to remove deprecated services and isolate Jellyfin and qBittorrent.
+## Phase 3: Stack Teardown & Rebuild
+
+The `docker-compose.yml` for `flyingDutchman` was audited. It contained the full *arr stack alongside Jellyseerr.
+
+**Actions Taken:**
+- Brought down the `flyingDutchman` docker cluster.
+- Quarantined the leftover `jellyseerr` configuration folder.
+- Rewrote `docker-compose.yml` to exclusively run `qbittorrent`, `jellyfin`, and `vlc`.
+- Spun the clean stack back up.
+
+**Current Active Ports:**
+- qBittorrent: 4020
+- Jellyfin: 4025
+- VLC: 4026
+
+**Next Steps:**
+- Verify Jellyfin and qBittorrent are active and accessible.
+- Address Nextcloud for family Calendars and Kanban boards.
+- Map the secondary USB ethernet port for the external VLAN access.
