@@ -90,3 +90,15 @@ During the stack rebuild, legacy *arr containers and Jellyseerr were orphaned be
 
 **Verification:**
 - Confirmed only `jellyfin`, `qbittorrent`, and `vlc` are actively running on the host.
+## Phase 5: Service Discovery
+
+An audit of all `docker-compose.yml` files in `theFenix` revealed that the Nextcloud configuration files found earlier are likely orphaned data, as no compose file exists in that directory. Services have been modularized into themed stacks.
+
+**Key Stacks Identified:**
+- `photoPass`: Suspected image backup service (Immich/Nextcloud Photos).
+- `workspace`: Suspected productivity hub (Calendars, Kanban).
+- `gateway`: Potential future routing for VLAN/External access.
+
+**Next Steps:**
+- Audit `workspace` and `photoPass` compose files to verify the configurations for Family Calendars, Kanban boards, and Image Backups.
+- Clean up any remaining deprecated configurations.
