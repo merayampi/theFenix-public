@@ -68,3 +68,25 @@ The `docker-compose.yml` for `flyingDutchman` was audited. It contained the full
 - Verify Jellyfin and qBittorrent are active and accessible.
 - Address Nextcloud for family Calendars and Kanban boards.
 - Map the secondary USB ethernet port for the external VLAN access.
+## Phase 4: Verification and Local Access
+
+**Security Check:**
+- The current stack (Jellyfin, qBittorrent, VLC) is strictly localized. 
+- External access is currently disabled by design to ensure zero wonky security.
+- Future external access will be securely routed through the secondary USB ethernet port via VLAN.
+
+**Container Health:**
+- Verified containers are running and stable via Docker logs.
+- Jellyfin accessible locally at ZapDos-IP:4025
+- qBittorrent accessible locally at ZapDos-IP:4020
+- ## Phase 4: Orphan Cleanup and Verification
+
+During the stack rebuild, legacy *arr containers and Jellyseerr were orphaned because they were removed from the compose file while still running. 
+
+**Actions Taken:**
+- Executed `docker compose down --remove-orphans` to kill and remove the detached containers.
+- Successfully released the `flyingdutchman_default` network.
+- Spun the clean stack back up.
+
+**Verification:**
+- Confirmed only `jellyfin`, `qbittorrent`, and `vlc` are actively running on the host.
