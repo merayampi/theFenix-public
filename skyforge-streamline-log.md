@@ -42,3 +42,10 @@ Ran isolated searches for existing configuration files to prepare for a clean sl
 2. Delete deprecated *arr configurations.
 3. Prepare Docker directories for the new family-focused stack.
 4. Stage the secondary USB ethernet port for future VLAN external access.
+## Phase 2: Quarantine Execution
+The secondary audit located the *arr stack configurations (Radarr, Sonarr, Prowlarr) inside the `flyingDutchman` cluster. 
+
+**Actions Taken:**
+- Quarantined Radarr, Sonarr, and Prowlarr configuration folders to `~/skyforge_quarantine/` to safely disable them without permanent deletion.
+- Preserved `qBittorrent` and `Nextcloud` directories.
+- Preparing to prune the `docker-compose.yml` file to remove deprecated services and isolate Jellyfin and qBittorrent.
