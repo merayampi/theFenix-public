@@ -102,3 +102,25 @@ An audit of all `docker-compose.yml` files in `theFenix` revealed that the Nextc
 **Next Steps:**
 - Audit `workspace` and `photoPass` compose files to verify the configurations for Family Calendars, Kanban boards, and Image Backups.
 - Clean up any remaining deprecated configurations.
+---
+
+# Architecture Revision: Project SkyForge
+
+## Strategic Pivot: Cloud & Container Focus
+The initial deployment of `theFenix` cluster was heavily weighted toward media procurement (the *arr stack) and hoarding. To ensure network security, data integrity, and hardware longevity, the overarching architecture is officially pivoting away from automated procurement.
+
+**New Core Objectives:**
+1. Secure, isolated family cloud infrastructure (Calendars, Kanban, Image Backups).
+2. Minimized write-wear on external flash storage.
+3. Preparation for VLAN segregation and external secure tunneling.
+
+## The I/O Routing Protocol
+To prevent database write-fatigue on `whitePearl`, all storage paths are being re-routed based on data velocity:
+
+* **Primary Active Data (Hot):** `/mnt/barbosaBay` (1TB HDD). Handles daily family photo uploads (Immich), Nextcloud file syncing, and regularly watched media (Jellyfin).
+* **Database Volumes (High Write):** Migrating to the internal zapDos NVMe to absorb constant I/O cycles, protecting external drives from read/write burnout.
+* **Family Backups (Warm):** Mirrored sequentially from `barbosaBay` to `whitePearl` via scheduled automated syncs. 
+* **Personal/Admin Backups (Cold):** Bypasses `barbosaBay` entirely. Routed directly to cold external storage (`blackPearl`/`blackBox`).
+* **Deprecation:** `/mnt/tortugaEstuary` is slated for data evacuation and retirement from the active SkyForge storage pool.
+
+---
