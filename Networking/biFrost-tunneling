@@ -1,0 +1,14 @@
+---
+title: Remote Tunneling & DNS Routing
+status: active
+---
+
+# Remote Tunneling & Edge Routing
+
+To maintain secure access to `theFenix` from remote locations without exposing internal ports to the open internet, the environment utilizes a hardware travel router integrated with containerized VPN endpoints.
+
+## Implementation Details
+1. **The Edge Router (`biFrost`)**: A GL.iNet Opal travel router configured to establish an encrypted perimeter.
+2. **The VPN Endpoint (`wg-easy`)**: Hosted on the `molTres` node.
+3. **Port Forwarding**: `biFrost` utilizes OpenWrt/LuCI to forward incoming WireGuard traffic directly to the `molTres` container endpoint.
+4. **DNS Management**: DNS queries within the tunnel are resolved and filtered through an AdGuard Home container hosted on `articUno`.
