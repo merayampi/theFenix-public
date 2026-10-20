@@ -1,0 +1,33 @@
+---
+aliases: [Immich Storage Crash, wickedWench Migration]
+tags: [homelab, theFenix, zapDos, storage, immich, lessons-learned]
+date: 2026-10-20
+status: complete
+---
+
+# Field Notes: The Immich Storage Crisis & Resolution
+
+## The Goal
+Today's objective for the `photoPass` stack was simple: get our massive 138 GB family photo and media archive fully integrated and scanned into Immich on our primary node, `zapDos`. What started as a straightforward library import turned into a cascading lockup due to two very human oversights. 
+
+## Mistake 1: The Phantom Drive
+After spending significant time perfectly organizing the master media archive on the `wickedWench` drive, I confidently initiated the library scan in Immich. It processed immediately and found absolutely zero files. 
+
+The reason? I had left the physical `wickedWench` drive plugged into `molTres` (my other machine) after organizing it, completely forgetting to actually connect it to the `zapDos` server before hitting scan.
+
+## Mistake 2: The 100% Capacity Crash
+Once the drive was physically moved to the correct computer, I kicked off the scan again. It started finding files—but I had forgotten to route the app's internal cache out of the default directory. 
+
+As Immich rapidly generated thumbnails, video transcodes, and facial recognition data for 138 GB of media, it dumped all of that newly generated data directly onto the server's main OS drive. The NVMe drive hit 100% capacity in minutes, causing the database to panic, lock up in recovery mode, and crash the entire system.
+
+## The Fix: A Three-Tier Storage Architecture
+To bring `zapDos` back to life, we had to stop the system, clear out the bloated cache files, and wipe the locked database volume to give the main OS drive room to breathe again. 
+
+Moving forward, we re-architected how the `photoPass` stack handles data across our physical drives to prevent this from ever happening again:
+
+1. **The Fast Cache (`tortugaEstuary` SSD):** All incoming mobile backups, generated thumbnails, and processing files are now routed here. This keeps the user interface lightning fast without choking the main server drive.
+2. **The Brains & Active Access (`barbosaBay` HDD):** The heavy database was moved here to handle the constant background read/writes. This drive will also house our everyday, active media.
+3. **The Vault (`wickedWench` HDD):** The massive, sensitive master archive stays safely on this cold storage drive. Immich has read-only access to scan it, but no heavy processing or active data is stored here.
+
+## Conclusion
+The server is no longer having a panic attack, the operating system drive is permanently protected from media bloat, and the library is currently scanning safely in the background across a properly delegated three-drive setup.
